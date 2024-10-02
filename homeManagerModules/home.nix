@@ -5,7 +5,7 @@
   home.username = "mukeshkannan";
   home.homeDirectory = "/home/mukeshkannan";
 
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.05";
   home.packages = [ ];
   home.file = { };
   home.sessionVariables = { };
@@ -21,14 +21,15 @@
 
   programs.git = {
   	userName = "MKMukeshKannan";
-	userEmail = "mukeshkannan311@gmail.com";
+	  userEmail = "mukeshkannan311@gmail.com";
   };
 
   programs.zsh = {
     enable = true;
     oh-my-zsh = { 
     	enable = true; 
-	plugins = [ ];
+	    plugins = [ "git" ];
+	    theme = "robbyrussell";
     };
   };
 

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, inputs, ... }: 
 
 {
 	boot.loader.systemd-boot.enable = true;
@@ -14,5 +14,6 @@
 		vim 
 		wget
 		kitty
+		inputs.zen-browser.packages."${system}".generic
 	];
 }

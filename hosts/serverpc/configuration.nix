@@ -4,10 +4,7 @@
 {
 	imports = [ 
 		./hardware-configuration.nix 
-		./hyprland.nix
-		./network.nix
-		./system-options.nix
-		./users.nix
+    ./system
 
 		inputs.home-manager.nixosModules.default
 	];
@@ -15,7 +12,7 @@
 	home-manager = {
 		extraSpecialArgs = { inherit inputs; };
 		users = {
-			"mukeshkannan" = import ./home.nix;
+			"mukeshkannan" = import ../../homeManagerModules/home.nix;
 		};
 	};
 
