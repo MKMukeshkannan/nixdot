@@ -4,7 +4,7 @@
 {
 	imports = [ 
 		./hardware-configuration.nix 
-    ./system
+    ./modules
 
 		inputs.home-manager.nixosModules.default
 	];
@@ -12,7 +12,7 @@
 	home-manager = {
 		extraSpecialArgs = { inherit inputs; };
 		users = {
-			"mukeshkannan" = import ../../homeManagerModules/home.nix;
+			"mukeshkannan" = import ../../home/home.nix;
 		};
 	};
 
