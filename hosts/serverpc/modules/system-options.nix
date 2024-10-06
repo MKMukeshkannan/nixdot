@@ -13,8 +13,7 @@
   environment.systemPackages = with pkgs; [
     rofi-wayland
     waybar
-    neovim
-    vim
+    vim-full
     wget
     swww
     xclip
