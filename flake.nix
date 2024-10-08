@@ -8,26 +8,23 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: {
+  outputs = { self, nixpkgs, home-manager, nixvim, ...  } @ inputs: {
     nixosConfigurations.MK = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
+
       modules = [
         ./hosts
-
-        home-manager.nixosModules.default
-        {
+        home-manager.nixosModules.default {
           home-manager = {
             extraSpecialArgs = {inherit inputs;};
-            users = {
-              "mukeshkannan" = import ./home/home.nix;
-            };
+            users.mukeshkannan = import ./home-config/mukeshkannan/home.nix;
+            users.cerberus = import ./home-config/cerberus/home.nix;
           };
         }
       ];
