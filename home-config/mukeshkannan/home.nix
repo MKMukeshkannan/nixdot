@@ -17,6 +17,10 @@
     userEmail = "mukeshkannan311@gmail.com";
   };
 
+  programs.nixvim = {
+    enable = true;
+  };
+
   programs.kitty = {
     enable = true;
     font = {

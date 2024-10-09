@@ -14,20 +14,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, ...  } @ inputs: {
+  outputs = { self, nixpkgs, home-manager, nixvim, ...  }@inputs: {
+
     nixosConfigurations.MK = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
+      modules = [ ./hosts ];
+    };
 
+    homeConfigurations.MK = home-manager.lib.homeManagerConfiguration {
       modules = [
-        ./hosts
-        home-manager.nixosModules.default {
-          home-manager = {
-            extraSpecialArgs = {inherit inputs;};
-            users.mukeshkannan = import ./home-config/mukeshkannan/home.nix;
-            users.cerberus = import ./home-config/cerberus/home.nix;
-          };
-        }
+        ./home-config/mukeshkannan/home.nix
+        nixvim.homeManagerModules.nixvim
       ];
     };
+
   };
 }
