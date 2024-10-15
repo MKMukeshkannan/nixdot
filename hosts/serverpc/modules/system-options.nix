@@ -59,6 +59,8 @@
       '';
     })
 
+    (import ../../../scripts/xforce.nix {inherit pkgs;})
+
     inputs.zen-browser.packages."${system}".generic
   ];
 }

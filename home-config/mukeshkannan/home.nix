@@ -17,18 +17,21 @@
     userEmail = "mukeshkannan311@gmail.com";
   };
 
-  programs.nixvim = {
-    enable = true;
-  };
-
   programs.kitty = {
     enable = true;
     font = {
       name = "meslo-lgs-nf";
       size = 11.0;
     };
-    themeFile = "SpaceGray_Eighties";
+    themeFile = "PencilLight";
     extraConfig = ''
+      foreground #fcfcfa
+      background #000
+      
+      dim_opacity                0.4
+      background_opacity         0.3
+      background_blur             64
+
       window_padding_width 20
     '';
   };

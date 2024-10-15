@@ -18,15 +18,17 @@
 
     nixosConfigurations.MK = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
-      modules = [ ./hosts ];
-    };
-
-    homeConfigurations.MK = home-manager.lib.homeManagerConfiguration {
-      modules = [
-        ./home-config/mukeshkannan/home.nix
-        nixvim.homeManagerModules.nixvim
+      modules = [ 
+        ./hosts 
+        home-manager.nixosModules.home-manager
+        {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.mukeshkannan = import ./home-config/mukeshkannan/home.nix;
+        }
       ];
     };
+
 
   };
 }
